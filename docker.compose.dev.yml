@@ -18,24 +18,24 @@ services:
     networks:
       - app
 
-  php-dev:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: laravel-app
-    container_name: '${APP_NAME-app}'
-    restart: unless-stopped
-    working_dir: /var/www/html
-    volumes:
-      - .:/var/www/html
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.php.rule=Host(`spa.localhost`)"
-      - "traefik.http.routers.php.entrypoints=web"
-    depends_on:
-      - mysql
-    networks:
-      - app
+#  php-dev:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    image: laravel-app
+#    container_name: '${APP_NAME-app}'
+#    restart: unless-stopped
+#    working_dir: /var/www/html
+#    volumes:
+#      - .:/var/www/html
+#    labels:
+#      - "traefik.enable=true"
+#      - "traefik.http.routers.php.rule=Host(`spa.localhost`)"
+#      - "traefik.http.routers.php.entrypoints=web"
+#    depends_on:
+#      - mysql
+#    networks:
+#      - app
 
   mysql:
     image: mysql:8.0
